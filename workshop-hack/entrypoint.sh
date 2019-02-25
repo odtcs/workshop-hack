@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ ! -e /workshop-hack/hackut/settings.py ]; then
-    cp /workshop-hack/hackut/settings.py.dev /workshop-hack/hackut/settings.py
+    cp /workshop-hack/hackut/settings.py.default /workshop-hack/hackut/settings.py
   fi;
 
 python manage.py migrate --run-syncdb
