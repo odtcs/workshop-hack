@@ -1,0 +1,121 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* material icons font */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/static/fonts/materialicons.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+/* end of material icons font */
+
+.side-nav {
+    top: inherit;
+    width: inherit;
+    height: calc(100% - 70px - 25px);
+}
+
+.side-nav.fixed .collapsible-body .collapsible-body li a {
+    padding-left: 62px;
+}
+
+.side-nav.fixed .collapsible-body a::before {
+    content: "";
+}
+
+#nav-mobile.pin-top {
+    position: relative !important;
+    width: 100%;
+}
+
+@media screen and (min-width: 993px) {
+    .no-padding {
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #nav-mobile.pin-top {
+        position: fixed !important;
+        margin-top: 64px;
+    }
+}
+
+.brand-logo {
+    padding-left: 16px !important;
+}
+
+.promo {
+    width:100%
+}
+
+.promo i {
+    margin: 40px 0;
+    color: forestgreen;
+    font-size: 7rem;
+    display: block
+}
+
+.promo-caption {
+    font-size:1.7rem;
+    font-weight:500;
+    margin-top:5px;
+    margin-bottom:0
+}
+
+.toastmsg {
+    display: none;
+}
+
+.toast {
+    background-color: forestgreen;
+}
+
+nav {
+    background-color: forestgreen !important;
+}
+
+.btn {
+    background-color: forestgreen;
+}
+
+.btn:focus, .btn:hover {
+    background-color: darkgreen;
+}
+
+.modal-fixed-footer {
+    height: 90% !important;
+    width: 80%;
+}
+
+.modal {
+    max-height: 98% !important;
+}
+
+html {
+    font-family: "Arial Narrow", Arial, sans-serif;
+}

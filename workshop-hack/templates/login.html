@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container" style="text-align: center;">
+        <h2>Welcome at the Open Days of Technical Computer Science</h2>
+        <h1>Hack workshop</h1>
+        <p class="red-text">
+            <i class="material-icons">warning</i>
+            First a presentation will be held to give you more information about this workshop.
+            Please wait until the presentation has finished before starting the workshop.
+        </p>
+        <BR>
+        <button class="btn waves-effect waves-light modal-trigger" href="#modal-terms">
+            Start the workshop!
+            <i class="material-icons right">send</i>
+        </button>
+        <form method="post" id="create-session-form">
+            {% csrf_token %}
+        </form>
+        <BR/><BR/><BR/>
+        <img src="{% static 'img/logo2.png' %}" style="max-width: 60%;" />
+
+        <div id="modal-terms" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Rules - read carefully!</h4>
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="center promo">
+                            <i class="material-icons red-text">priority_high</i>
+                            <p class="promo-caption">Behave!</p>
+                            <p class="light center flow-text">
+                                This workshop allows you to find out the answers to the challenges it provides. It does not give you permission in any way to hack and/or abuse the system itself. If you think hacking and/or abusing the system is possible due to a bug, please report it to the workshop supervisors.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="center promo">
+                            <i class="material-icons red-text">account_balance</i>
+                            <p class="promo-caption">Obey the law!</p>
+                            <p class="light center flow-text">
+                                This application will try to teach you about cybersecurity. Always make sure to obey local laws. In most cases, this means that you are not allowed to use the skills you might learn here on websites other than this one. We do not take any responsibility for your actions and will not be held accountable.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="center promo">
+                            <i class="material-icons red-text">aspect_ratio</i>
+                            <p class="promo-caption">Stay on this domain!</p>
+                            <p class="light center flow-text">
+                                You are only allowed to try out hacking on this domain. This means that you are only allowed to try and solve the challenges on this domain: <b>tcs-opd.nl</b>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat red-text" style="margin-right: 50px" onclick="$('#modal-terms').modal('close')">I disagree</a>
+                <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat green-text" onclick="$('#create-session-form').submit()">I agree with the rules: I take responsibility for my own actions.</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

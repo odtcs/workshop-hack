@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <nav role="navigation" style="z-index: 9999;">
+        <div class="nav-wrapper">
+            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+            <a href="{% url 'home' %}" class="brand-logo">
+                <img src="{% static 'img/logo1.png' %}" style="padding-top: 10px;" />
+            </a>
+            <a href="{% url 'home' %}" class="brand-logo center hide-on-med-and-down">
+                Hack workshop
+            </a>
+            <ul class="right">
+                <li class="hide-on-small-only"><a href="javascript:void(0);" onclick="logout();"><i class="material-icons">exit_to_app</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="row">
+            <div class="col l2 no-padding">
+                <ul id="nav-mobile" class="side-nav fixed z-depth-0">
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            {% with request.resolver_match.view_name as url %}
+                                <li class="bold"><a class="collapsible-header waves-effect waves-teal{% if url == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a></li>
+                                {% for challenge in request.challenges %}
+                                    <li class="bold">
+                                        <a class="collapsible-header waves-effect waves-teal{% if url == challenge.id|slugify %} active{% endif %}" href="{% url challenge.id|slugify %}">
+                                            {% if challenge.completed %}
+                                                <i class="material-icons green-text tt" data-position="right" data-delay="50" data-tooltip="This challenge is completed!">done</i>
+                                            {% else %}
+                                                <i class="material-icons red-text tt" data-position="right" data-delay="50" data-tooltip="This challenge is not yet completed.">close</i>
+                                            {% endif %}
+                                            {{ challenge.category }}: {{ challenge.name }}</a></li>
+                                {% endfor %}
+                            {% endwith %}
+                            <li class="bold hide-on-med-and-up"><a class="collapsible-header waves-effect waves-teal" href="javascript:void(0);" onclick="logout();">Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s12 l10">
+                {% block innercontent %}{% endblock %}
+            </div>
+        </div>
+    </main>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="toastmsg">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base-menu.html' %}
+{% block innercontent %}
+
+    <h1>{{ currentchallenge.name }}</h1>
+    <p>This is the second challenge. To complete this challenge, the right password has to be entered in the field below.
+        Our system administration has learned from last time. He even took care of some awesome JavaScript validation!</p>
+    <script>
+        function check (x) {
+            if (x === "lemonsqueezy") {
+                window.alert("you got it");
+                return true;
+            } else {
+                window.alert("try again");
+                return false;
+            }
+        }
+    </script>
+    <form method="post" onsubmit="return check($('#code').val());" autocomplete="off">
+        {% csrf_token %}
+        <input type="password" name="code" id="code" />
+        <input type="submit" value="Enter" />
+    </form>
+
+{% endblock %}

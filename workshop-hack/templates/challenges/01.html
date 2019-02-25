@@ -1,0 +1,14 @@
+{% extends 'base-menu.html' %}
+{% block innercontent %}
+
+    <h1>{{ currentchallenge.name }}</h1>
+    <p>This is the first challenge. To complete this challenge, the right password has to be entered in the field below.
+        Unfortunately, our system administrator is not very good at remembering his passwords.</p>
+    <!--I keep forgetting the password: "easypeasy" -->
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+        <input type="password" name="code" />
+        <input type="submit" value="Enter" />
+    </form>
+
+{% endblock %}

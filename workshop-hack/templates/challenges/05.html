@@ -1,0 +1,28 @@
+{% extends 'base-menu.html' %}
+{% block innercontent %}
+
+    <h1>{{ currentchallenge.name }}</h1>
+    <p>This is the fifth challenge. To complete this challenge, the right password should be entered in the field below!
+        The system administrator encrypted the password again, however this time he decided to do the decryption server-side.
+    He still is not very good with remembering passwords, so he wrote the password down below and put an encoder on the website.</p>
+
+    <p>Dgb_^BgMa^;Z\d</p>
+
+    <p>Encoder:</p>
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+        <input type="text" name="decipher" />
+        <input type="submit" value="Enter" />
+    </form>
+    {% if decoded %}
+    The coded string is: {{ decoded }}
+    {% endif %}
+
+    <p>Password:</p>
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+        <input type="password" name="code" />
+        <input type="submit" value="Enter" />
+    </form>
+
+{% endblock %}
